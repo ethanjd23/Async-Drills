@@ -38,4 +38,24 @@ function countdown(num, callback) {
     };
 };
 
-countdown(6, done);
+// countdown(6, done);
+
+// Promises Promises
+let lunchTime = false;
+function orderMeSomeFood(time) {
+    return new Promise((resolve, reject) => {
+        if(time) {
+            let order = {
+                lunch: "chicken teriyaki",
+                drink: "peach tea"};
+            resolve(order);
+        } else {
+            let err = new Error("It's not lunchtime.");
+            reject(err);
+        };
+    });
+};
+
+orderMeSomeFood(lunchTime)
+.then((order) => console.log(order))
+.catch((err) => console.log(err))
